@@ -1,7 +1,6 @@
-
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
-@use '@angular/material' as mat;
+@use "@angular/material" as mat;
 // Plus imports for other components in your app.
 
 // Include the common styles for Angular Material. We include this here so that you only
@@ -10,48 +9,29 @@
 @include mat.core();
 
 // Define the theme object.
-$angular-app-light-theme: mat.define-theme((
-  color: (
-    theme-type: light,
-    primary: mat.$azure-palette,
-    tertiary: mat.$blue-palette,
-  ),
-  density: (
-    scale: 0,
+$test-theme: mat.define-theme(
+  (
+    color: (
+      theme-type: light,
+      primary: mat.$azure-palette,
+      tertiary: mat.$blue-palette,
+    ),
+    density: (
+      scale: 0,
+    ),
   )
-));
-
-$angular-app-dark-theme: mat.define-theme((
-  color: (
-    theme-type: dark,
-    primary: mat.$azure-palette,
-    tertiary: mat.$blue-palette,
-  ),
-  density: (
-    scale: 0,
-  )
-));
+);
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
 :root {
-  // @include mat.all-component-themes($angular-app-light-theme);
-  @include mat.core-theme($angular-app-dark-theme);
-  @include mat.button-theme($angular-app-dark-theme);
-
-  // Apply the light theme only when the user prefers light themes.
-  @media (prefers-color-scheme: light) {
-    // Use the `-color` mixins to only apply color styles without reapplying the same
-    // typography and density styles.
-    @include mat.core-color($angular-app-light-theme);
-    @include mat.button-color($angular-app-light-theme);
-  }
+  @include mat.all-component-themes($test-theme);
 }
 
 // Comment out the line below if you want to use the pre-defined typography utility classes.
 // For more information: https://material.angular.io/guide/typography#using-typography-styles-in-your-application.
-// @include mat.typography-hierarchy($angular-app-theme);
+// @include mat.typography-hierarchy($test-theme);
 
 // Comment out the line below if you want to use the deprecated `color` inputs.
-// @include mat.color-variants-backwards-compatibility($angular-app-theme);
+// @include mat.color-variants-backwards-compatibility($test-theme);
